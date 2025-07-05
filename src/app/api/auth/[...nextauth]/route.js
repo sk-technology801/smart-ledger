@@ -6,25 +6,25 @@ export const authOptions = {
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        email: { label: "Email", type: "text" },
+        email: { label: "Email", type: "email" },
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        const adminEmail = "admin@example.com";
-        const adminPassword = "admin123";
-        if (
-          credentials.email === adminEmail &&
-          credentials.password === adminPassword
-        ) {
-          return { id: "1", name: "Admin", email: adminEmail };
+        const { email, password } = credentials;
+
+        // Hardcoded example — replace this with MongoDB lookup
+        if (email === "admin@gmail.com" && password === "admin123") {
+          return { id: "1", name: "Admin", email: "admin@gmail.com" };
         }
+
         return null;
       },
     }),
   ],
   pages: {
-    signIn: "/login",
+    signIn: "/login", // custom login page
   },
+  secret: process.env.NEXTAUTH_SECRET,
 };
 
 const handler = NextAuth(authOptions);
