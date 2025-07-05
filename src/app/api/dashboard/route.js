@@ -1,6 +1,7 @@
+import { connectDB } from "../../../lib/db";
+import Revenue from "../../../models/revenue";
+import Expense from "../../../models/expense";
 
-import Revenue from "@/models/revenue";
-import Expense from "@/models/expense";
 
 export async function GET() {
   await connectDB();
