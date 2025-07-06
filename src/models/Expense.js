@@ -1,20 +1,19 @@
-// import mongoose from "mongoose";
-
-// const ExpenseSchema = new mongoose.Schema(
-//   {
-//     title: String,
-//     amount: Number,
-//     category: String,
-//   },
-//   { timestamps: true }
-// );
-
-// export default mongoose.models.Expense || mongoose.model("Expense", ExpenseSchema);
 import mongoose from "mongoose";
 
 const ExpenseSchema = new mongoose.Schema({
-  amount: Number,
-  date: { type: Date, default: Date.now }
+  title: {
+    type: String,
+    required: true,
+  },
+  amount: {
+    type: Number,
+    required: true,
+  },
+  category: String,
+  date: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 export default mongoose.models.Expense || mongoose.model("Expense", ExpenseSchema);
